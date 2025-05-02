@@ -1,31 +1,32 @@
 {
-  "schemaVersion": 1,
-  "id": "continuebutton",
-  "version": "${version}",
-  "name": "Continue Button",
-  "description": "Continue the last world you played from the main screen",
-  "authors": [
-    "umollu"
-  ],
-  "contact": {
-    "homepage": "https://umollu.com/",
-    "sources": "https://github.com/umollu/continue-button",
-    "issues": "https://github.com/umollu/continue-button/issues"
-  },
-  "license": "MIT",
-  "icon": "assets/continuebutton/icon.png",
-  "environment": "*",
-  "entrypoints": {
-    "client": [
-      "com.umollu.continuebutton.ContinueButtonMod"
-    ]
-  },
-  "mixins": [
-    "continuebutton.mixins.json"
-  ],
-  "depends": {
-    "fabricloader": ">=0.7.4",
-    "fabric": "*",
-    "minecraft": "1.17.x"
-  }
+	"schemaVersion": 1,
+	"id": "continuebutton",
+	"version": "${version}",
+	"name": "Continue Button",
+	"description": "Continue the last world you played from the main screen",
+	"authors": [
+		"umollu"
+	],
+	"contact": {
+		"homepage": "https://umollu.com/",
+		"sources": "https://github.com/umollu/continue-button",
+		"issues": "https://github.com/umollu/continue-button/issues"
+	},
+	"license": "MIT",
+	"icon": "assets/continuebutton/icon.png",
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"com.umollu.continuebutton.ContinueButtonClient"
+		]
+	},
+	"mixins": [
+		"continuebutton.client.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.13",
+		"minecraft": "~1.21.4",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
 }
