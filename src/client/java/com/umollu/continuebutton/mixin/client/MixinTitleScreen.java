@@ -113,12 +113,14 @@ public class MixinTitleScreen extends Screen {
                     ContinueButtonClient.saveConfig();
 
                     serverInfo.label = Text.translatable("multiplayer.status.pinging");
+                    ServerAddress address = ServerAddress.parse(serverInfo.address);
                     try {
-                        serverListPinger.add(serverInfo, () -> {
-
-                        }, () -> {
-
-                        });
+                        serverListPinger.add(
+                                serverInfo,
+                                null,
+                                () -> {},
+                                null
+                        );
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
