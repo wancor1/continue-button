@@ -1,11 +1,24 @@
-# Continue Button (Minecraft Fabric Mod)
+# ClientHarvest
 
-Continue the last world you played from the main screen
+ClientHarvest aims to be the clientside version of [RightClickHarvest](https://modrinth.com/mod/rightclickharvest) and is based on it.
+Harvest crops with ease, on any server you like!
 
-![](https://raw.githubusercontent.com/umollu/continue-button/assets/screenshot.gif)
+## Usage
 
-## My other mods
+Right click on a crop to harvest and replant it at the same time!
+(Note: you need to be holding the seed)
 
-[![](https://umollu.com/images/ash-badge.png)](https://github.com/umollu/ash)
+Works for:
+- Wheet
+- Carrots
+- Beetroot
 
-[![](https://umollu.com/images/inventory-pause-badge.png)](https://github.com/umollu/inventory-pause)
+<a href="https://modrinth.com/mod/clientharvest"><img alt="Download on Modrinth" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/modrinth_vector.svg"></a>
+<a href="https://www.curseforge.com/minecraft/mc-mods/clientharvest"><img alt="Download on CurseForge" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges/assets/cozy/available/curseforge_vector.svg"></a>
+### Roadmap
+
+- [x] make basic feature 
+- [x] make icon
+- [x] make README.md Better
+- [x] port it to curseforge
+- [ ] make forge port
