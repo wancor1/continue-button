@@ -4,8 +4,10 @@ import com.google.common.io.Files;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.client.network.ServerInfo;
-import net.minecraft.util.WorldSavePath;
+import net.minecraft.client.Minecraft;
+import net.minecraft.world.level.storage.LevelResource;
+import net.minecraft.client.multiplayer.ServerData;
+import org.joml.AxisAngle4f;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,7 +17,6 @@ import java.nio.file.Path;
 import java.util.Properties;
 
 public class ContinueButtonClient implements ClientModInitializer {
-
 	public static boolean lastLocal = true;
 	public static String serverName = "";
 	public static String serverAddress = "";
@@ -23,18 +24,23 @@ public class ContinueButtonClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
 		ClientPlayConnectionEvents.JOIN.register((handler, sender, client) -> {
-			if (client.isIntegratedServerRunning()) {
-				lastLocal = true;
-				String levelName = client.getServer().getSaveProperties().getLevelName();
-				Path pathtoSave = Path.of(Files.simplifyPath(client.getServer().getSavePath(WorldSavePath.ROOT).toString()));
-				String folderName = pathtoSave.normalize().toFile().getName();
-				serverName = levelName;
-				serverAddress = folderName;
-			} else {
-				ServerInfo serverInfo = client.getCurrentServerEntry();
+			if (Minecraft.getInstance().hasSingleplayerServer()) {
+                lastLocal = true;
+                String levelName = null;
+                if (Minecraft.getInstance().getSingleplayerServer() != null) {
+                    levelName = Minecraft.getInstance().getSingleplayerServer().getWorldData().getLevelName();
+                }
+                Path pathToSave = Path.of(Minecraft.getInstance().getSingleplayerServer().getWorldPath(LevelResource.ROOT).toString());
+				String folderName = pathToSave.getFileName().toString();
+                serverName = levelName;
+                serverAddress = folderName;
+            } else {
+				ServerData serverInfo = Minecraft.getInstance().getCurrentServer();
 				lastLocal = false;
-				serverName = serverInfo.name;
-				serverAddress = serverInfo.address;
+				if (serverInfo != null) {
+					serverName = serverInfo.name;
+					serverAddress = serverInfo.ip;
+				}
 			}
 			saveConfig();
 		});	}

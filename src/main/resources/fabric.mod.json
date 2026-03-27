@@ -1,35 +1,32 @@
 {
-  "schemaVersion": 1,
-  "id": "clientharvest",
-  "version": "${version}",
-  "name": "ClientHarvest",
-  "description": "Right Click Harvest on client side! Replants the seeds only if you are holding them in your main hand.",
-  "icon": "icon.jpeg",
-  "authors": [
-    "PainfulPaladins"
-  ],
-  "contact": {
-    "homepage": "https://modrinth.com/mod/clientharvest/",
-    "sources": "https://github.com/PainfulPaladins-Mods/Client-Harvest",
-    "issues": "https://github.com/PainfulPaladins-Mods/Client-Harvest/issues"
-  },
-  "license": "MIT",
-  "environment": "client",
-  "entrypoints": {
-    "client": [
-      "org.clientharvest.HarvestModClient"
-    ],
-    "modmenu": [
-      "org.clientharvest.ModMenuIntegration"
-    ]
-  },
-  "depends": {
-    "minecraft": "*",
-    "fabricloader": ">=${loader_version}",
-    "fabric-api": "*",
-    "yet_another_config_lib_v3": ">=3.9.0"
-  },
-  "suggests": {
-    "modmenu": ">=8.0.0"
-  }
+	"schemaVersion": 1,
+	"id": "continuebutton",
+	"version": "${version}",
+	"name": "Continue Button",
+	"description": "Continue the last world you played from the main screen",
+	"authors": [
+		"umollu"
+	],
+	"contact": {
+		"homepage": "https://umollu.com/",
+		"sources": "https://github.com/umollu/continue-button",
+		"issues": "https://github.com/umollu/continue-button/issues"
+	},
+	"license": "MIT",
+	"icon": "assets/continuebutton/icon.png",
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"com.umollu.continuebutton.ContinueButtonClient"
+		]
+	},
+	"mixins": [
+		"continuebutton.client.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.18.4",
+		"minecraft": "26.1",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
 }
